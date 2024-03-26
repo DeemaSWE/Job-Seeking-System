@@ -28,7 +28,7 @@ public class UserService {
     public void updateUser(User updatedUser, Integer id){
         User user = getUserById(id);
 
-        if(userRepository.existsByEmail(updatedUser.getEmail()) && !user.getId().equals(id))
+        if(!user.getEmail().equals(updatedEmail) && userRepository.existsByEmail(updatedEmail))
             throw new IllegalArgumentException("User with email " + user.getEmail() + " already exists");
 
         user.setName(updatedUser.getName());
